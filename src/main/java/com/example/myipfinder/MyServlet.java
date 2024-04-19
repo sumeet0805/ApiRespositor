@@ -14,7 +14,9 @@ public class MyServlet extends HttpServlet {
 
 	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-      resp.setContentType("text/plain");
+     		resp.setContentType("text/plain");
+	        resp.setStatus(HttpServletResponse.SC_OK); // Set status code to 200    
+	    	resp.setHeader("Access-Control-Allow-Origin", "*"); // Allow requests from any origin
 		
 		PrintWriter out = resp.getWriter();
 		
@@ -25,6 +27,7 @@ public class MyServlet extends HttpServlet {
 		}
 		
 		out.println("Public IP Address of the client: " + clientIP);
+	    out.close();
     }
 }
 
